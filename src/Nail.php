@@ -12,4 +12,13 @@ namespace xiaoyan\ydingtalk;
 class Nail
 {
 
+    /**
+     * GET请求类
+     * @param $url
+     * @return false|string
+     */
+    public static function requestByGet($url)
+    {
+        return file_get_contents($url);
+    }
 }
