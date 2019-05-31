@@ -44,7 +44,7 @@ class Nail
     public static function error($msg = null)
     {
         if(!is_null($msg)){
-            self::$erreor = $msg;
+            self::$error = $msg;
         }else{
             return self::$error;
         }
