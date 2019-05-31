@@ -3,7 +3,7 @@
     "description": "Nail quick-use bag",
     "type": "library",
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.6"
     },
     "authors": [
         {
