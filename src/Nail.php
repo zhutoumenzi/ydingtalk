@@ -12,6 +12,13 @@ namespace xiaoyan\ydingtalk;
 
 class Nail
 {
+    /**
+     * 协议头
+     * @var array
+     */
+    protected static $headers = [
+        'Content-Type' => 'application/json',
+    ];
 
     /**
      * 错误信息
