@@ -1,0 +1,20 @@
+{
+    "name": "xiaoyan/ydingtalk",
+    "description": "Nail quick-use bag",
+    "type": "library",
+    "require": {
+        "php": ">=5.3"
+    },
+    "authors": [
+        {
+            "name": "zhutoumenzi",
+            "email": "577274441@qq.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "xiaoyan\\ydingtalk\\": "src/"
+        }
+    }
+}
