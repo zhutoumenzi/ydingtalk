@@ -89,6 +89,9 @@ class Nail
 
     public static function __callStatic($name, $arguments)
     {
+        if(self::$token){
+            self::getToken();
+        }
         // TODO: Implement __callStatic() method.
         return call_user_func_array([__NAMESPACE__.'\operate\\'.$name, 'getInstance'], [self::$token, self::$url, self::$headers]);
     }
