@@ -12,6 +12,12 @@ namespace xiaoyan\ydingtalk;
 
 use xiaoyan\ydingtalk\http\Ask;
 
+/**
+ * Class Nail
+ * @package xiaoyan
+ * @method \xiaoyan\ydingtalk\operate\Register test() static 从主服务器读取数据
+ */
+
 class Nail
 {
     /**
@@ -70,6 +76,12 @@ class Nail
         }else{
             return self::error($data);
         }
+    }
+
+    public static function __callStatic($name, $arguments)
+    {
+        // TODO: Implement __callStatic() method.
+        return call_user_func_array([__NAMESPACE__.'\operate\\'.$name, 'getInstance'], [self::$token, self::$url, self::$headers]);
     }
 
     /**

@@ -12,5 +12,8 @@ namespace xiaoyan\ydingtalk\operate;
 
 class Register extends Template
 {
-
+    public function test()
+    {
+        echo 1;
+    }
 }

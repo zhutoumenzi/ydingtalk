@@ -12,26 +12,35 @@ namespace xiaoyan\ydingtalk\operate;
 
 class Template
 {
-    private static $url;//接口地址
+    protected static $url;//接口地址
 
-    private static $headers;//协议头
+    protected static $headers;//协议头
 
-    private static $token;//ACCESS_TOKEN
+    protected static $token;//ACCESS_TOKEN
 
-    private static $_instance;
+    protected static $_instance = [];
 
-    private function __construct($token, $headers)
+    private function __construct($token, $url, $headers)
     {
         self::$token = $token;
+        self::$url = $url;
         self::$headers = $headers;
     }
 
-    public static function getInstance($token, $headers)
+    /**
+     * 切换访问类
+     * @param $token
+     * @param $url
+     * @param $headers
+     * @return mixed
+     */
+    public static function getInstance($token, $url, $headers)
     {
-        if(!(self::$_instance instanceof self)){
-            self::$_instance = new self($token, $headers);
+        $name = get_called_class();
+        if(!isset(self::$_instance[$name])){
+            self::$_instance[$name] = new $name($token, $url, $headers);
         }
-        return self::$_instance;
+        return self::$_instance[$name];
     }
 
     private function __clone()
