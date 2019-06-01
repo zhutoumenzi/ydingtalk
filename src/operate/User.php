@@ -19,7 +19,7 @@ class User extends Template
      * @param $userid
      * @return mixed
      */
-    public function getUserView($userid)
+    public function get($userid)
     {
         $url = self::$url.'/user/get?access_token='.self::$token.'&userid='.$userid;
         $data = Ask::http($url, 'GET', null, self::$headers);
@@ -32,7 +32,7 @@ class User extends Template
      * @param $deptId 部门id
      * @return mixed
      */
-    public function getDeptUserId($deptId)
+    public function getDeptMember($deptId)
     {
         $url = self::$url.'/user/getDeptMember?access_token='.self::$token.'&deptId='.$deptId;
         $data = Ask::http($url, 'GET', null, self::$headers);
@@ -54,7 +54,7 @@ class User extends Template
      * custom：代表用户定义(未定义时按照拼音)排序
      * @return mixed
      */
-    public function getDeptUser($arr = [])
+    public function simplelist($arr = [])
     {
         $url = self::$url.'/user/simplelist?access_token='.self::$token;
         foreach ($arr as $key => $vo)
@@ -80,7 +80,7 @@ class User extends Template
      * custom：代表用户定义(未定义时按照拼音)排序
      * @return mixed
      */
-    public function getDeptUserView($arr = [])
+    public function listbypage($arr = [])
     {
         $url = self::$url.'/user/listbypage?access_token='.self::$token;
         foreach ($arr as $key => $vo)
@@ -96,7 +96,7 @@ class User extends Template
      * 获取管理员列表
      * @return mixed
      */
-    public function getUserAdmin()
+    public function get_admin()
     {
         $url = self::$url.'/user/get_admin?access_token='.self::$token;
         $data = Ask::http($url, 'GET', null, self::$headers);
@@ -108,9 +108,22 @@ class User extends Template
      * 获取管理员通讯录权限范围
      * @return mixed
      */
-    public function getUserAdminScope()
+    public function get_admin_scope()
     {
         $url = self::$url.'/topapi/user/get_admin_scope?access_token='.self::$token;
+        $data = Ask::http($url, 'GET', null, self::$headers);
+        $res = json_decode($data, true);
+        return $res;
+    }
+
+    /**
+     * 根据unionid获取userid
+     * @param $unionid
+     * @return mixed
+     */
+    public function getUseridByUnionid($unionid)
+    {
+        $url = self::$url.'/user/getUseridByUnionid?access_token='.self::$token.'&unionid='.$unionid;
         $data = Ask::http($url, 'GET', null, self::$headers);
         $res = json_decode($data, true);
         return $res;

@@ -19,7 +19,7 @@ class Register extends Template
      * @param $code 前端免登录code
      * @return mixed
      */
-    public function getUserId($code)
+    public function getuserinfo($code)
     {
         $url = self::$url.'/user/getuserinfo?access_token='.self::$token.'&code='.$code;
         $data = Ask::http($url, 'GET', null, self::$headers);
