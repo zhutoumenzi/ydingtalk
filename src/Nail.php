@@ -30,13 +30,13 @@ class Nail
      * 钉钉appKey
      * @var string
      */
-    protected static $appKey;
+    protected static $appKey = '';
 
     /**
      * 钉钉秘钥
      * @var string
      */
-    protected static $appSecret;
+    protected static $appSecret = '';
 
     /**
      * 协议头
@@ -76,6 +76,15 @@ class Nail
         }else{
             return self::error($data);
         }
+    }
+
+    /**
+     * 设置ACCESS_TOKEN
+     * @param $token
+     */
+    public static function setToken($token)
+    {
+        self::$token = $token;
     }
 
     public static function __callStatic($name, $arguments)

@@ -10,10 +10,20 @@
 namespace xiaoyan\ydingtalk\operate;
 
 
+use xiaoyan\ydingtalk\http\Ask;
+
 class Register extends Template
 {
-    public function test()
+    /**
+     * 获取用户userid
+     * @param $code
+     * @return mixed
+     */
+    public function getUserId($code)
     {
-        echo 1;
+        $url = self::$url.'/user/getuserinfo?access_token='.self::$token.'&code='.$code;
+        $data = Ask::http($url, 'GET', null, self::$headers);
+        $res = json_decode($data, true);
+        return $res;
     }
 }
