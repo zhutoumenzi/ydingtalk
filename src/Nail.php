@@ -10,8 +10,28 @@
 namespace xiaoyan\ydingtalk;
 
 
+use xiaoyan\ydingtalk\http\Ask;
+
 class Nail
 {
+    /**
+     * 接口地址
+     * @var string
+     */
+    protected static $url = 'https://oapi.dingtalk.com';
+
+    /**
+     * 钉钉appKey
+     * @var string
+     */
+    protected static $appKey;
+
+    /**
+     * 钉钉秘钥
+     * @var string
+     */
+    protected static $appSecret;
+
     /**
      * 协议头
      * @var array
@@ -21,19 +41,35 @@ class Nail
     ];
 
     /**
+     * ACCESS_TOKEN
+     * @var string
+     */
+    protected static $token;
+
+    /**
      * 错误信息
      * @var null
      */
     protected static $error = null;
 
     /**
-     * GET请求类
-     * @param $url
-     * @return false|string
+     * 返回ACCESS_TOKEN
+     * @return string
      */
-    public static function requestByGet($url)
+    public static function getToken()
     {
-        return file_get_contents($url);
+        if(self::$token){
+            return self::$token;
+        }
+        $url = self::$url.'/gettoken?appkey='.self::$appKey.'&appsecret='.self::$appSecret;
+        $data = Ask::http($url, 'GET', null, self::$headers);
+        $res = json_decode($data, true);
+        if($res['errmsg'] == 'ok'){
+            self::$token = $res['access_token'];
+            return self::$token;
+        }else{
+            return self::error($data);
+        }
     }
 
     /**
