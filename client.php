@@ -9,4 +9,6 @@
 require __DIR__ . '/vendor/autoload.php';
 // 调用类方法，打印返回值字符串的长度
 use xiaoyan\ydingtalk\Nail;
+Nail::setToken('11111');
 $a = Nail::Register();
+echo $a->test();

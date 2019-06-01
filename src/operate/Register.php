@@ -16,7 +16,7 @@ class Register extends Template
 {
     /**
      * 获取用户userid
-     * @param $code
+     * @param $code 前端免登录code
      * @return mixed
      */
     public function getUserId($code)
