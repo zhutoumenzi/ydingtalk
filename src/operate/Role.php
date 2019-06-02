@@ -10,6 +10,9 @@
 namespace xiaoyan\ydingtalk\operate;
 
 
+use xiaoyan\ydingtalk\http\Ask;
+use xiaoyan\ydingtalk\Template;
+
 class Role extends Template
 {
     /**

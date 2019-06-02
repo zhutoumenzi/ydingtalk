@@ -7,7 +7,7 @@
  * 模板
  */
 
-namespace xiaoyan\ydingtalk\operate;
+namespace xiaoyan\ydingtalk;
 
 
 class Template
