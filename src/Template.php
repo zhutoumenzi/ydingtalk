@@ -18,7 +18,7 @@ abstract class Template
 
     protected static $token;//ACCESS_TOKEN
 
-    protected static $_instance = [];
+    private static $_instance = [];
 
     private function __construct($token, $url, $headers)
     {
