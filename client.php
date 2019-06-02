@@ -11,4 +11,3 @@ require __DIR__ . '/vendor/autoload.php';
 use xiaoyan\ydingtalk\Nail;
 Nail::setToken('11111');
 $a = Nail::Register();
-echo $a->test();

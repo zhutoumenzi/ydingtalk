@@ -10,7 +10,7 @@
 namespace xiaoyan\ydingtalk;
 
 
-class Template
+abstract class Template
 {
     protected static $url;//接口地址
 
