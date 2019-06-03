@@ -59,4 +59,19 @@ class Message extends Template
         $res = json_decode($data, true);
         return $res;
     }
+
+    /**
+     * 发送普通消息
+     * @param array $arr['sender'] //消息发送者 userId
+     * @param array $arr['cid'] //群会话或者个人会话的id，通过JSAPI的dd.chooseChatForNormalMsg接口唤起联系人界面选择之后即可拿到会话cid
+     * @param array $arr['msg'] //消息内容，消息类型和样例可参考“消息类型与数据格式”文档。最长不超过2048个字节
+     * @return mixed
+     */
+    public function send_to_conversation($arr = [])
+    {
+        $url = self::$url.'/message/send_to_conversation?access_token='.self::$token;
+        $data = Ask::http($url, 'POST', $arr, self::$headers);
+        $res = json_decode($data, true);
+        return $res;
+    }
 }
