@@ -99,4 +99,17 @@ class Processinstance extends Template
         $res = json_decode($data, true);
         return $res;
     }
+
+    /**
+     * 获取审批钉盘空间信息
+     * @param array $arr['user_id'] //用户id
+     * @return mixed
+     */
+    public function info($arr = [])
+    {
+        $url = self::$url.'/topapi/processinstance/cspace/info?access_token='.self::$token;
+        $data = Ask::http($url, 'POST', $arr, self::$headers);
+        $res = json_decode($data, true);
+        return $res;
+    }
 }
